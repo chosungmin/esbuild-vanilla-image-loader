@@ -78,7 +78,7 @@ function ImageLoader(options) {
           await import_promises.default.writeFile(relativeFilePath, fileContent);
         }
         return {
-          contents: `${publicPath}${hashedName}`,
+          contents: `' ${publicPath}${hashedName}'`,
           loader: "text"
         };
       });

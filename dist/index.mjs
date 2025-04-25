@@ -44,7 +44,7 @@ function ImageLoader(options) {
           await fs.writeFile(relativeFilePath, fileContent);
         }
         return {
-          contents: `${publicPath}${hashedName}`,
+          contents: `' ${publicPath}${hashedName}'`,
           loader: "text"
         };
       });

@@ -69,7 +69,7 @@ export function ImageLoader(options: Options): Plugin {
         }
       
         return {
-          contents: `${publicPath}${hashedName}`,
+          contents: `' ${publicPath}${hashedName}'`,
           loader: "text"
         };
       })

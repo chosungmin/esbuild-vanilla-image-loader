@@ -25,7 +25,7 @@ function ImageLoader(options) {
         }
         const distPath = options?.distPath ?? "/dist/";
         const fileNameTemplate = options?.fileName ?? "[name]-[hash][extname]";
-        const publicPath = options?.publicPath ?? "";
+        const publicPath = options?.publicPath !== "" ? "\\" + options.publicPath : "";
         const fileContent = await fs.readFile(args.path);
         const hash = await hasha(fileContent, { algorithm: "sha1" });
         const ext = path.extname(args.path);

@@ -36,7 +36,7 @@ module.exports = __toCommonJS(index_exports);
 var import_promises = __toESM(require("fs/promises"));
 var import_path = __toESM(require("path"));
 var import_hasha = __toESM(require("hasha"));
-function ImageLoader({ outputPath = "dist/assets", ...options }) {
+function ImageLoader(options) {
   return {
     name: "esbuild-vanilla-image-loader",
     setup(build) {
@@ -57,6 +57,7 @@ function ImageLoader({ outputPath = "dist/assets", ...options }) {
             loader: "js"
           };
         }
+        const outputPath = options?.outputPath ?? "dist/assets";
         const fileContent = await import_promises.default.readFile(args.path);
         const hash = await (0, import_hasha.default)(fileContent, { algorithm: "sha1" });
         const ext = import_path.default.extname(args.path);

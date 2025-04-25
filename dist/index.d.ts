@@ -6,6 +6,6 @@ interface Options {
     file?: false;
     outputPath?: string;
 }
-declare function ImageLoader({ outputPath, ...options }: Options): Plugin;
+declare function ImageLoader(options: Options): Plugin;
 
 export { ImageLoader };

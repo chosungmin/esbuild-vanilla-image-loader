@@ -2,7 +2,7 @@
 import fs from "fs/promises";
 import path from "path";
 import hasha from "hasha";
-function ImageLoader({ outputPath = "dist/assets", ...options }) {
+function ImageLoader(options) {
   return {
     name: "esbuild-vanilla-image-loader",
     setup(build) {
@@ -23,6 +23,7 @@ function ImageLoader({ outputPath = "dist/assets", ...options }) {
             loader: "js"
           };
         }
+        const outputPath = options?.outputPath ?? "dist/assets";
         const fileContent = await fs.readFile(args.path);
         const hash = await hasha(fileContent, { algorithm: "sha1" });
         const ext = path.extname(args.path);

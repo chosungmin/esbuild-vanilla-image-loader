@@ -23,26 +23,28 @@ function ImageLoader(options) {
             loader: "js"
           };
         }
-        const outputPath = options?.outputPath ?? "dist/assets";
+        const distPath = options?.distPath ?? "/dist/";
+        const fileNameTemplate = options?.fileName ?? "[name]-[hash][extname]";
+        const publicPath = options?.publicPath ?? "";
         const fileContent = await fs.readFile(args.path);
         const hash = await hasha(fileContent, { algorithm: "sha1" });
         const ext = path.extname(args.path);
         const base = path.basename(args.path, ext);
-        const hashedName = `${base}-${hash.slice(0, 16)}${ext}`;
-        const outPath = path.resolve(outputPath, hashedName);
+        const hashedName = fileNameTemplate.replace("[name]", base).replace("[hash]", hash.slice(0, 16)).replace("[extname]", ext);
+        const relativeFilePath = path.join(build.initialOptions.absWorkingDir ?? "", distPath, hashedName);
         let alreadyExists = false;
         try {
-          await fs.access(outPath);
+          await fs.access(relativeFilePath);
           alreadyExists = true;
         } catch {
           alreadyExists = false;
         }
         if (!alreadyExists) {
-          await fs.mkdir(path.dirname(outPath), { recursive: true });
-          await fs.writeFile(outPath, fileContent);
+          await fs.mkdir(path.dirname(relativeFilePath), { recursive: true });
+          await fs.writeFile(relativeFilePath, fileContent);
         }
         return {
-          contents: `/assets/${hashedName}`,
+          contents: `${publicPath}${hashedName}`,
           loader: "text"
         };
       });

@@ -57,26 +57,28 @@ function ImageLoader(options) {
             loader: "js"
           };
         }
-        const outputPath = options?.outputPath ?? "dist/assets";
+        const distPath = options?.distPath ?? "/dist/";
+        const fileNameTemplate = options?.fileName ?? "[name]-[hash][extname]";
+        const publicPath = options?.publicPath ?? "";
         const fileContent = await import_promises.default.readFile(args.path);
         const hash = await (0, import_hasha.default)(fileContent, { algorithm: "sha1" });
         const ext = import_path.default.extname(args.path);
         const base = import_path.default.basename(args.path, ext);
-        const hashedName = `${base}-${hash.slice(0, 16)}${ext}`;
-        const outPath = import_path.default.resolve(outputPath, hashedName);
+        const hashedName = fileNameTemplate.replace("[name]", base).replace("[hash]", hash.slice(0, 16)).replace("[extname]", ext);
+        const relativeFilePath = import_path.default.join(build.initialOptions.absWorkingDir ?? "", distPath, hashedName);
         let alreadyExists = false;
         try {
-          await import_promises.default.access(outPath);
+          await import_promises.default.access(relativeFilePath);
           alreadyExists = true;
         } catch {
           alreadyExists = false;
         }
         if (!alreadyExists) {
-          await import_promises.default.mkdir(import_path.default.dirname(outPath), { recursive: true });
-          await import_promises.default.writeFile(outPath, fileContent);
+          await import_promises.default.mkdir(import_path.default.dirname(relativeFilePath), { recursive: true });
+          await import_promises.default.writeFile(relativeFilePath, fileContent);
         }
         return {
-          contents: `/assets/${hashedName}`,
+          contents: `${publicPath}${hashedName}`,
           loader: "text"
         };
       });

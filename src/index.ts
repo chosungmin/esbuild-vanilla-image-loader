@@ -1,5 +1,5 @@
 import type { Plugin } from 'esbuild'
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import path from 'path';
 import hasha  from 'hasha';
 

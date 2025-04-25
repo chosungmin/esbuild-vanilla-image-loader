@@ -354,7 +354,7 @@ var require_hasha = __commonJS({
 
 // src/index.ts
 var import_hasha = __toESM(require_hasha());
-import fs from "fs/promises";
+import fs from "node:fs/promises";
 import path from "path";
 function ImageLoader({ outputPath = "dist/assets", ...options }) {
   return {

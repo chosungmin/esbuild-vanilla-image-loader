@@ -10,7 +10,7 @@ interface Options {
   outputPath?: string
 }
 
-export function ImageLoader({outputPath='dist/assets', ...options}: Options): Plugin {
+export function ImageLoader(options: Options): Plugin {
   return {
     name: 'esbuild-vanilla-image-loader',
     setup(build) {
@@ -33,6 +33,7 @@ export function ImageLoader({outputPath='dist/assets', ...options}: Options): Pl
           }
         }
 
+        const outputPath = options?.outputPath ?? "dist/assets";
         const fileContent =  await fs.readFile(args.path);
 
         // 1. 해시 계산

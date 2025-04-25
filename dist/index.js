@@ -32,7 +32,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 
 // node_modules/.pnpm/is-stream@1.1.0/node_modules/is-stream/index.js
 var require_is_stream = __commonJS({
-  "node_modules/.pnpm/is-stream@1.1.0/node_modules/is-stream/index.js"(exports, module2) {
+  "node_modules/.pnpm/is-stream@1.1.0/node_modules/is-stream/index.js"(exports2, module2) {
     "use strict";
     var isStream = module2.exports = function(stream) {
       return stream !== null && typeof stream === "object" && typeof stream.pipe === "function";
@@ -54,7 +54,7 @@ var require_is_stream = __commonJS({
 
 // node_modules/.pnpm/pinkie@2.0.4/node_modules/pinkie/index.js
 var require_pinkie = __commonJS({
-  "node_modules/.pnpm/pinkie@2.0.4/node_modules/pinkie/index.js"(exports, module2) {
+  "node_modules/.pnpm/pinkie@2.0.4/node_modules/pinkie/index.js"(exports2, module2) {
     "use strict";
     var PENDING = "pending";
     var SETTLED = "settled";
@@ -290,7 +290,7 @@ var require_pinkie = __commonJS({
 
 // node_modules/.pnpm/pinkie-promise@2.0.1/node_modules/pinkie-promise/index.js
 var require_pinkie_promise = __commonJS({
-  "node_modules/.pnpm/pinkie-promise@2.0.1/node_modules/pinkie-promise/index.js"(exports, module2) {
+  "node_modules/.pnpm/pinkie-promise@2.0.1/node_modules/pinkie-promise/index.js"(exports2, module2) {
     "use strict";
     module2.exports = typeof Promise === "function" ? Promise : require_pinkie();
   }
@@ -298,7 +298,7 @@ var require_pinkie_promise = __commonJS({
 
 // node_modules/.pnpm/hasha@2.2.0/node_modules/hasha/index.js
 var require_hasha = __commonJS({
-  "node_modules/.pnpm/hasha@2.2.0/node_modules/hasha/index.js"(exports, module2) {
+  "node_modules/.pnpm/hasha@2.2.0/node_modules/hasha/index.js"(exports2, module2) {
     "use strict";
     var fs2 = require("fs");
     var crypto = require("crypto");
@@ -353,11 +353,11 @@ var require_hasha = __commonJS({
 });
 
 // src/index.ts
-var src_exports = {};
-__export(src_exports, {
+var index_exports = {};
+__export(index_exports, {
   ImageLoader: () => ImageLoader
 });
-module.exports = __toCommonJS(src_exports);
+module.exports = __toCommonJS(index_exports);
 var import_promises = __toESM(require("fs/promises"));
 var import_path = __toESM(require("path"));
 var import_hasha = __toESM(require_hasha());

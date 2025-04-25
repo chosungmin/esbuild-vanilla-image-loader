@@ -27,7 +27,7 @@
     "dist"
   ],
   "scripts": {
-    "build-fast": "tsup src/index.ts --format cjs,esm --external esbuild",
+    "build-fast": "tsup src/index.ts --format esm,cjs --external esbuild,hasha --clean",
     "build": "pnpm build-fast --dts-resolve",
     "lint": "eslint .",
     "prepublishOnly": "pnpm build",

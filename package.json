@@ -31,15 +31,16 @@
     "build": "pnpm build-fast --dts-resolve",
     "lint": "eslint .",
     "prepublishOnly": "pnpm build",
-    "release": "bumpp && npm publish",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.38.6",
+    "@types/hasha": "^3.0.1",
     "@types/node": "^18.16.12",
     "bumpp": "^9.1.0",
     "esbuild": "^0.17.19",
     "eslint": "^8.40.0",
+    "hasha": "^2.2.0",
     "tsup": "6.7.0",
     "typescript": "^5.0.4"
   },

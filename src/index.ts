@@ -37,8 +37,7 @@ export function ImageLoader(options: Options): Plugin {
 
         const distPath = options?.distPath ?? "/dist/";
         const fileNameTemplate = options?.fileName ?? '[name]-[hash][extname]';
-        // '\\' 넣은 이유는 버그 build 결과물을 가져다 쓰는 곳에서 발생하는 path 문제를 해결하기 위함
-        const publicPath = options?.publicPath !== '' ? '\\' + options.publicPath : '';
+        const publicPath = options?.publicPath ?? "";
         const fileContent = await fs.readFile(args.path);
         const hash = await hasha(fileContent, { algorithm: "sha1" });
         const ext = path.extname(args.path);
@@ -69,7 +68,7 @@ export function ImageLoader(options: Options): Plugin {
         }
       
         return {
-          contents: `' ${publicPath}${hashedName}'`,
+          contents: `${publicPath}${hashedName}`,
           loader: "text"
         };
       })

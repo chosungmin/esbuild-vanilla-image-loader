@@ -59,7 +59,7 @@ function ImageLoader(options) {
         }
         const distPath = options?.distPath ?? "/dist/";
         const fileNameTemplate = options?.fileName ?? "[name]-[hash][extname]";
-        const publicPath = options?.publicPath !== "" ? "\\" + options.publicPath : "";
+        const publicPath = options?.publicPath ?? "";
         const fileContent = await import_promises.default.readFile(args.path);
         const hash = await (0, import_hasha.default)(fileContent, { algorithm: "sha1" });
         const ext = import_path.default.extname(args.path);
@@ -78,7 +78,7 @@ function ImageLoader(options) {
           await import_promises.default.writeFile(relativeFilePath, fileContent);
         }
         return {
-          contents: `' ${publicPath}${hashedName}'`,
+          contents: `${publicPath}${hashedName}`,
           loader: "text"
         };
       });
